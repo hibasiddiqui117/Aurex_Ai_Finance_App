@@ -1,30 +1,36 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load CSV, skip first row which contains 'Ticker'
+# Load raw CSV
 df = pd.read_csv("sp500.csv", skiprows=1, index_col=0, parse_dates=True)
 
-# Rename columns to standard names
+# Rename columns
 df.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
 
-# Ensure all numeric columns are floats
+# Convert to numeric
 df = df.apply(pd.to_numeric, errors='coerce')
 
-# Drop rows with NaN just in case
+# Drop NaNs
 df = df.dropna()
-# Daily returns
+
+# Features for ML
 df['Return'] = df['Close'].pct_change()
+df['Volatility'] = df['Return'].rolling(30).std()
 
-# Volatility (rolling std of returns)
-df['Volatility'] = df['Return'].rolling(window=10).std()
-
-# Drop NaN values created by pct_change and rolling
+# Drop NaNs from rolling
 df = df.dropna()
 
+# Target: 1 if next day return > 0, else 0
+df['Target'] = (df['Return'].shift(-1) > 0).astype(int)
+df = df.dropna()  # drop last row where target is NaN
+
+# Inspect
 print(df.head())
 print(df.dtypes)
 
-# Plot the Close price
+# Plot
 df['Close'].plot(figsize=(12,5), title="S&P 500 Price Trend")
 plt.show()
+
+# Save cleaned CSV
 df.to_csv("cleaned_sp500_features.csv")
