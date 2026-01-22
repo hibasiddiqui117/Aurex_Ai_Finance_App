@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "symbol": "^GSPC",
+    "type": "percent_change",
+    "threshold": 5.0,
+    "condition": "increase",
+    "created": "2026-01-14 23:32:58",
+    "triggered": false
+  },
+  {
+    "id": 2,
+    "symbol": "AAPL",
+    "type": "price_above",
+    "threshold": 100.0,
+    "condition": null,
+    "created": "2026-01-14 23:42:26",
+    "triggered": false
+  },
+  {
+    "id": 3,
+    "symbol": "MSFT",
+    "type": "percent_change",
+    "threshold": 5.0,
+    "condition": "decrease",
+    "created": "2026-01-20 17:01:03",
+    "triggered": false
+  }
+]
