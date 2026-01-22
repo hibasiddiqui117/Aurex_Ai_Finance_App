@@ -25,5 +25,14 @@
     "condition": "decrease",
     "created": "2026-01-20 17:01:03",
     "triggered": false
+  },
+  {
+    "id": 4,
+    "symbol": "NVDA",
+    "type": "price_above",
+    "threshold": 100.0,
+    "condition": null,
+    "created": "2026-01-22 19:19:00",
+    "triggered": false
   }
 ]

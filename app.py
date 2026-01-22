@@ -27,12 +27,12 @@ st.markdown("""
 <style>
     .main-header {
         font-size: 2.5rem;
-        color: #1f77b4;
+        color: #280f33;
         text-align: center;
         margin-bottom: 2rem;
     }
     .card {
-        background-color: #f0f2f6;
+        background-color:#efd7fa;
         padding: 1.5rem;
         border-radius: 10px;
         margin-bottom: 1rem;
@@ -56,13 +56,21 @@ def create_download_link(df, filename):
     return href
 
 def main():
-    # Header
-    st.markdown('<h1 class="main-header">📈 AUREX-Stock Market Predictor </h1>', 
-                unsafe_allow_html=True)
-    
+    # App title with Seasons font
+    st.markdown("""
+        <link href="https://fonts.googleapis.com/css2?family=Seasons+One&display=swap" rel="stylesheet">
+        <h1 style="font-family: 'Seasons One', serif; text-align: center; color: #280f33;">
+            AUREX-Stock Market Predictor
+        </h1>
+    """, unsafe_allow_html=True)
+
     # Sidebar
     with st.sidebar:
+        st.image("logo.png", width=160)
         st.header("⚙️ Settings")
+
+
+    # Sidebar    with st.sidebar:        st.header("⚙️ Settings")
         
         # Stock selection
         selected_stock = st.selectbox(
@@ -127,7 +135,7 @@ def main():
     st.markdown(
         """
         <div style='text-align: center'>
-            <p>Data from Yahoo Finance</p>
+            <p> Designed and deployed by HAS | Data from Yahoo Finance</p>
             
         </div>
         """,
